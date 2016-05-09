@@ -1,4 +1,4 @@
-describe 'Create account' do
+describe 'Contact Us' do
   context 'free plan' do
     before(:all) do
       @email = Faker::Internet.email
@@ -18,14 +18,24 @@ describe 'Create account' do
         )
         page.home
       end
+
+
+      on HomePage do |page|
+        page.contact_us
+      end
+
+      on ContactUsPage do |page|
+        page.home
+      end  
     end
 
+    
     it 'currently signed in' do
       on HomePage do |page|
         expect(page.content_div).to include("Currently sign in as #{@email}")
       end
     end
-
+    
     after(:all) do
       visit EditUserPage do |page|
         page.cancel_and_confirm

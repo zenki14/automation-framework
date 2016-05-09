@@ -1,4 +1,4 @@
-describe 'Create account' do
+describe 'Change Password' do
   context 'free plan' do
     before(:all) do
       @email = Faker::Internet.email
@@ -18,7 +18,17 @@ describe 'Create account' do
         )
         page.home
       end
-    end
+
+      on HomePage do |page|
+        page.my_account
+      end
+
+      on EditUserPage do |page|
+        page.back
+      end  
+
+
+    end    
 
     it 'currently signed in' do
       on HomePage do |page|

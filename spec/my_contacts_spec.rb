@@ -1,4 +1,4 @@
-describe 'Create account' do
+describe 'My Contacts Page' do
   context 'free plan' do
     before(:all) do
       @email = Faker::Internet.email
@@ -18,7 +18,13 @@ describe 'Create account' do
         )
         page.home
       end
+
+      visit MyContactsPage do |page|
+        page.my_contacts 
+        page.home
+      end
     end
+
 
     it 'currently signed in' do
       on HomePage do |page|
